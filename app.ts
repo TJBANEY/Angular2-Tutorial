@@ -491,3 +491,56 @@ class TodoServiceClassTwo {
 // Classes can implement more than one interface. The syntax for that is to simply seperate
 // multiple interfaces after the class name with commas.
 
+
+/*****  Generics  *****/
+
+// - Generics are a way to create functions and classes that define a behavior that can be
+// reused across many different types while retaining the full information about that type.
+
+// Generic syntax is just the less than and greater than sign
+
+function clone <T>(value: T): T {  
+	let serialized = JSON.stringify(value);
+	return JSON.parse(serialized);
+}
+
+// 'T' is a generic type. This tells the function that the returned object type will always be
+// the same type as the passed in value.
+
+/** 
+The crux of the problem that generics solves is that, we expect the return value to be the 
+same type of object that we passed into the function here, but since JSON.parse takes a string
+that can represent any type of object, it is not gauranteed that what we get back will be the same
+as what we put in.
+**/
+
+// If you are using the same code over and over in your application, and are simply 
+// changing which type your using for that code, than generics is a good way to reduce
+// repeated code.
+
+// GENERIC CLASSES
+
+class keyValuePair <TKey, TValue> {
+
+	constructor(public key: TKey, public value: TValue){
+
+	}
+
+}
+
+let pair1 = new keyValuePair(1, 'one');
+let pair2 = new keyValuePair('second', Date.now());
+let pair3 = new keyValuePair('third', 3)
+
+// Since TKey, and TValue that are used in the constructor are generic types passed into
+// the class, you can instantiate many different objects with different types.
+
+// You can also instantiate objects explicitly telling the constructor what type you want
+// TKey and TValue to be, i.e.
+
+let pair4 = new keyValuePair<number, number>(1, 4);
+let pair5 = new keyValuePair<string, number>('five', 5);
+
+// This is similar behavior to the array object
+
+var array1: Array<number> = [1, 2, 3]
