@@ -544,3 +544,21 @@ let pair5 = new keyValuePair<string, number>('five', 5);
 // This is similar behavior to the array object
 
 var array1: Array<number> = [1, 2, 3]
+
+// Generic Constraints
+
+function totalLength <T extends {length: number}> (x: T, y: T){
+	var total: number = x.length + y.length;
+	return total;
+}
+
+var length = totalLength('Jess', [1, 2, 3]);
+
+
+// The syntax for generic constraints is to extend an anonymous object on the generic type
+// generic types allow you to explicitly constrain types to only be objects with the constraint fields
+
+
+
+
+
