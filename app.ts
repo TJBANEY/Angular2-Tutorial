@@ -219,6 +219,13 @@ interface jQueryElement {
 
 // 2) Enums = Like boolean has two states: True or False, Enums can have multiple different states
 
+enum TodoState {
+	New = 1, 
+	Active = 2,
+	Completed = 3,
+	Deleted = 4
+}
+
 /* 
 
 interface Todo {
@@ -241,9 +248,25 @@ function todoState(todo: Todo){
 
 */
 
-enum TodoState {
-	New = 1, 
-	Active = 2,
-	Completed = 3,
-	Deleted = 4
+/* Classes and Prototypes */
+
+function TodoServicePrototype(){
+	this.todos = [];
 }
+
+TodoServicePrototype.prototype.getAll = function(){
+	return this.todos;
+}
+
+var service = new TodoServicePrototype();
+service.getAll()
+
+// When presented with state or behavior on an object, TypeScript will first look at that
+// object for the state or behavior, and if that object doesn't have it, it will go to that
+// object's prototype that it inherits from, and will keep doing that until it gets to the
+// 'Object' object.
+
+
+
+
+

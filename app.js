@@ -51,3 +51,54 @@ function calculate(action) {
 calculate('add', 1, 2, 3, 4);
 var source = [1, 5, 7];
 var example_array = [4, 6, 6].concat(source, [9]);
+var Todo1 = {
+    name: 'Pick up drycleaning'
+};
+var $ = function (selector) {
+    // find DOM Element
+};
+$.version = 1.12;
+// Having a second interface by the same name will extend the first interface without changing
+// its original state or behavior. *Really should only be used when extending third party code.
+// 2) Enums = Like boolean has two states: True or False, Enums can have multiple different states
+var TodoState;
+(function (TodoState) {
+    TodoState[TodoState["New"] = 1] = "New";
+    TodoState[TodoState["Active"] = 2] = "Active";
+    TodoState[TodoState["Completed"] = 3] = "Completed";
+    TodoState[TodoState["Deleted"] = 4] = "Deleted";
+})(TodoState || (TodoState = {}));
+/*
+
+interface Todo {
+    name: number;
+    state: TodoState;
+}
+
+var Todo1 = {
+    name: 'Pick up drycleaning'
+    state: TodoState.New
+}
+
+function todoState(todo: Todo){
+    
+    if(todo.state != TodoState.Completed ){
+        throw "Can't complete already completed task"
+    }
+
+}
+
+*/
+/* Classes and Prototypes */
+function TodoServicePrototype() {
+    this.todos = [];
+}
+TodoServicePrototype.prototype.getAll = function () {
+    return this.todos;
+};
+var service = new TodoServicePrototype();
+service.getAll();
+// When presented with state or behavior on an object, TypeScript will first look at that
+// object for the state or behavior, and if that object doesn't have it, it will go to that
+// object's prototype that it inherits from, and will keep doing that until it gets to the
+// 'Object' object.
