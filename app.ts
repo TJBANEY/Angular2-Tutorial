@@ -259,14 +259,57 @@ TodoServicePrototype.prototype.getAll = function(){
 }
 
 var service = new TodoServicePrototype();
-service.getAll()
+service.getAll();
 
 // When presented with state or behavior on an object, TypeScript will first look at that
 // object for the state or behavior, and if that object doesn't have it, it will go to that
 // object's prototype that it inherits from, and will keep doing that until it gets to the
 // 'Object' object.
 
+/****  1. Defining a Class  ****/
 
+class TodoServiceClass {
+
+	static lastId: number = 0;
+
+	_state: TodoState;
+
+	get state(){
+		return this._state
+	}
+
+	set state(newState){
+
+		if (newState == TodoState.Completed){
+
+			var canBeCompleted = this.state == TodoState.Active || this.state == TodoState.Deleted;
+
+			if (!canBeCompleted){
+				throw "Todo must be Active or Deleted in order to be marked complete.";
+			}
+
+			this._state = newState;
+
+		}
+
+	}
+
+	constructor(private todos: Todo[]) {
+
+	}
+
+	add(todo: Todo){
+		var newId = TodoServiceClass.getNextId();
+	}
+
+	static getNextId(){
+		return TodoServiceClass.lastId += 1;
+	}
+
+	getAll(){
+		return this.todos;
+	}
+}
 
 
 
