@@ -311,5 +311,68 @@ class TodoServiceClass {
 	}
 }
 
+// Extends keyword extends a class, or can override it. You do not need a constructor
+// on the extended class. If you do not include one, it will simply inherit from the base
+// class
 
+interface Todo {
+	state: TodoState;
+} 
+
+class CompleteTodoStateChanger extends TodoStateChanger {
+
+	constructor(){
+		super(TodoState.Completed);
+	}
+
+	canChangeState(todo: Todo): boolean {
+		return !!todo && (todo.state == TodoState.Active || todo.state == TodoState.Deleted)
+	}
+
+}
+
+/*****  Abstract Base Classes  *****/
+
+// Abstract classes are used for classes that were only meant to be extended or overwritten
+// as base classes, and not instantiated directly.
+
+abstract class TodoStateChanger {
+
+	constructor (private newState: TodoState){
+
+	}
+
+	canChangeState(todo: Todo): boolean {
+		return !!todo;
+	}
+
+	changeState(todo: Todo): Todo {
+		if (this.canChangeState(todo)){
+			todo.state = this.newState;
+		}
+
+		return todo;
+	}
+}
+
+abstract class TodoStateChangerWithAbstractMethods {
+
+	constructor (private newState: TodoState){
+
+	}
+
+	abstract canChangeState(todo: Todo): boolean;
+	// Making a method abstract mean that every derived class must implement its own
+	// version of this method.
+
+	changeState(todo: Todo): Todo {
+		if (this.canChangeState(todo)){
+			todo.state = this.newState;
+		}
+
+		return todo;
+	}
+}
+
+// An error will be raised if you attempt to instantiate an abstract class.
 
