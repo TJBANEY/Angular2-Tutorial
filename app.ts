@@ -389,4 +389,105 @@ abstract class TodoStateChangerWithAbstractMethods {
 
 // Protected = Same as Private, but extended or inherited class from that member can also use those methods
 
+/****  
+
+The Access Modifiers private, and public are not actually supported by JavaScript 
+or TypeScript and will not have any affect on your application at runtime. It is 
+simply for your own protection in development.
+	
+****/
+
+/***  Implementing Interfaces on Classes  ***/
+
+interface TodoTwo {
+	id: number,
+	name: string,
+	state: TodoState
+}
+
+interface ITodoServiceTwo {
+
+	add(todo: Todo): Todo; // Method that takes one parameter, and returns that created Todo
+	delete(todoId: number): void; // Method that takes one parameter, but does not return anything
+	getAll(): Todo[]; // Method that takes no paramters, and returns an array of Todo objects
+	getById(todoId: number): Todo; // Method that takes one parameter, and returns a Todo object
+
+}
+
+// To have a class implement an interface, the syntax is simply to add implements after the
+// name of the class.
+
+class TodoServiceClassTwo {
+
+	static lastId: number = 0;
+
+	_state: TodoState;
+
+	get state(){
+		return this._state
+	}
+
+	set state(newState){
+
+		if (newState == TodoState.Completed){
+
+			var canBeCompleted = this.state == TodoState.Active || this.state == TodoState.Deleted;
+
+			if (!canBeCompleted){
+				throw "Todo must be Active or Deleted in order to be marked complete.";
+			}
+
+			this._state = newState;
+
+		}
+
+	}
+
+	constructor(private todos: Todo[]) {
+
+	}
+
+	add(todo: TodoTwo){
+		todo.id = TodoServiceClass.getNextId();
+
+		this.todos.push(todo);
+
+		return todo;
+	}
+
+	static getNextId(){
+		return TodoServiceClass.lastId += 1;
+	}
+
+	delete(todoId: number): void {
+		var toDelete = this.getById(todoId);
+
+		var deletedIndex = this.todos.indexOf(toDelete);
+
+		this.todos.splice(deletedIndex, 1);
+	}
+
+	getAll(){
+		// return this.todos;
+
+		var clones = JSON.stringify(this.todos)
+		return JSON.parse(clones);
+	}
+
+	getById(todoId: number): Todo {
+		var filtered = this.todos.filter(x => x.id == todoId)
+
+		if (filtered.length) {
+			return filtered[0]
+		}
+
+		return null;
+	}
+}
+
+// A class that implements an interface must have all the none optional fields and methods 
+// of that interface, or else an error will be raised.
+
+// Classes can implement more than one interface. The syntax for that is to simply seperate
+// multiple interfaces after the class name with commas.
 
