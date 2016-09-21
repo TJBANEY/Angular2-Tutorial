@@ -158,7 +158,92 @@ function example(variable1: any[], variable2: any[]){
 
 *************************************/
 
+/******* TypeScript Custom Types ********/
+
+// 1) Interface = Acts as a contract that describes the data and behaviors that the object
+// exposes.
+
+interface Todo {
+	name: number;
+	completed?: boolean;
+}
+
+interface ITodoService {
+
+	add(todo: Todo): Todo; // Method that takes one parameter, and returns that created Todo
+	delete(todoId: number): void; // Method that takes one parameter, but does not return anything
+	getAll(): Todo[]; // Method that takes no paramters, and returns an array of Todo objects
+	getById(todoId: number): Todo; // Method that takes one parameter, and returns a Todo object
+
+}
+
+var Todo1 = {
+	name: 'Pick up drycleaning'
+}
+
+// Interfaces are stricly used for compile time checks only, and have no affect 
+// on code at runtime.
+
+// Question mark states that completed is not required, but if you do decide to 
+// use it, it must be a boolean value.
+
+// Interfaces can also be used to describe functions.
+
+interface jQuery {
+	(selector: string): HTMLElement;
+	version: number;
+}
+
+var $ = <jQuery>function(selector){
+	// find DOM Element
+}
+
+$.version = 1.12
+
+// <> Is the syntax to cast a variable into a certain type. This is sayingthat the $ 
+// function needs to be a jQuery type.
+
+interface jQueryElement {
+	data(name: string): any;
+	data(name: string, data: any): jQueryElement
+}
+
+interface jQueryElement {
+	todo(): Todo;
+	todo(todo: Todo): jQueryElement;
+}
+
+// Having a second interface by the same name will extend the first interface without changing
+// its original state or behavior. *Really should only be used when extending third party code.
 
 
+// 2) Enums = Like boolean has two states: True or False, Enums can have multiple different states
 
+/* 
 
+interface Todo {
+	name: number;
+	state: TodoState;
+} 
+
+var Todo1 = {
+	name: 'Pick up drycleaning'
+	state: TodoState.New
+}
+
+function todoState(todo: Todo){
+	
+	if(todo.state != TodoState.Completed ){
+		throw "Can't complete already completed task"
+	}
+
+}
+
+*/
+
+enum TodoState {
+	New = 1, 
+	Active = 2,
+	Completed = 3,
+	Deleted = 4
+}
