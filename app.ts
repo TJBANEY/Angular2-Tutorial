@@ -338,7 +338,7 @@ class CompleteTodoStateChanger extends TodoStateChanger {
 
 abstract class TodoStateChanger {
 
-	constructor (private newState: TodoState){
+	constructor (protected newState: TodoState){
 
 	}
 
@@ -357,7 +357,7 @@ abstract class TodoStateChanger {
 
 abstract class TodoStateChangerWithAbstractMethods {
 
-	constructor (private newState: TodoState){
+	constructor (protected newState: TodoState){
 
 	}
 
@@ -375,4 +375,18 @@ abstract class TodoStateChangerWithAbstractMethods {
 }
 
 // An error will be raised if you attempt to instantiate an abstract class.
+
+/******  Accesss Modifiers  *****/
+
+// Access modifiers include private, public, protected among others.
+
+// If setting an access modifier on a getter or setter, both the getter and setter 
+// version of the same method must use the same access modifier.
+
+// Private = Only methods defined directly on the same class definition may access that member.
+
+// Public = And member can use this method.
+
+// Protected = Same as Private, but extended or inherited class from that member can also use those methods
+
 
