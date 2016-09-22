@@ -559,6 +559,87 @@ var length = totalLength('Jess', [1, 2, 3]);
 // generic types allow you to explicitly constrain types to only be objects with the constraint fields
 
 
+/*****  TypeScript Modules  ******/
+
+// NAMESPACES
+
+// Name spacing, like C# and Java is a nice way to make your code more modular.
+// The syntax for namespacing is simply the word namespace followed by the namespace name
+
+namespace TodoApp.Model {
+
+	export interface TodoThree {
+		id: number;
+		name: string;
+		state: TodoState;
+	}
+
+}
+
+// Multiple different namespaces, or namespaces of the same name can be used in one file
+
+namespace TodoApp.Model {
+
+	export enum TodoState { // <= TodoState enum can be used by any other TodoApp.Model namespace
+		New = 1,
+		Active = 2,
+		Completed = 3,
+		Deleted = 4
+	}
+
+}
+
+namespace DataAccess {
+
+	var Model = TodoApp.Model;
+	var Todo = TodoApp.Model.TodoThree // <= One way to use code from other namespaces
+
+	// Or for each spot where Todo is used, you could simply rewrite it as 
+	// TodoApp.Model.TodoThree
+
+	export interface ITodoServiceThree { // <= using export here will not allow use by TodoApp.model namespace
+
+		add(todo: Todo): Todo; // Method that takes one parameter, and returns that created Todo
+		delete(todoId: number): void; // Method that takes one parameter, but does not return anything
+		getAll(): Todo[]; // Method that takes no paramters, and returns an array of Todo objects
+		getById(todoId: number): Todo; // Method that takes one parameter, and returns a Todo object
+
+	}
+
+}
+
+// Namespaces of the same name must use export on chunks of code to be used in the other namespace
+
+// This does not work however when using code in one namespace in an entirely different namespace.
+
+// In order to use code in other name spaces, you have to either import the namespace, or refer to 
+// the chunk of code with the namespace appended to the name of the class, function, etc.
+
+// Encapsulation
+
+// Immediately Invoked Function Expression "IIFE"
+
+var jQuery = {
+	version: 1.19,
+	fn: {}
+};
+
+(function defineType($){
+
+	if ($.version > 1.15)
+		throw "Plugin requires jQuery version 1.15+"
+
+	$.fn.myPlugin = function(){
+		// Do Something
+	}
+
+})(jQuery) // <= This syntax makes immediately calls the function.
+
+// A TypeScript namespace is nothing more than syntactic sugar to create a javascript IIFE
+
+// 1) Things declared in a namespace remain private unless you explicitly expose them.
+
+
 
 
 
