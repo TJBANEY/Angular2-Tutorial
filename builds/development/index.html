@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Learn AngularJS2: The Basics</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+	<!-- Scripts to allow Angular2 and Typescript to work on older browsers -->
+	<script type="text/javascript" src="js/lib/angular2/es6-sham.min.js" />
+	<script type="text/javascript" src="js/lib/angular2/system-polyfills.js" />
+	<script type="text/javascript" src="js/lib/angular2/angular2-polyfills.js" />
+
+	<!-- Script for loading Typescript modules -->
+	<script type="text/javascript" src="js/lib/angular2/system.src.js" />
+
+	<!-- Something to do with 'observables' -->
+	<script type="text/javascript" src="js/lib/angular2/Rx.js" />
+
+	<!-- Angular Script -->
+	<script type="text/javascript" src="js/lib/angular2/angular2.dev.js" />
+
+	<!-- defaultExtension is 'js' so whenever we import a module, we don't have to include the js at the end. -->
+	<script type="text/javascript">
+		System.config({
+			packages: {
+				js: {
+					format: 'register',
+					defaultExtension: 'js'
+				}
+			}
+		});
+		System.import('js/boot')
+			.then(null, console.error.bind(console));
+	</script>
+
+</head>
+<body>
+	<my-app>Loading...</my-app>
+</body>
+</html>

@@ -4,12 +4,12 @@ var typescript = require('gulp-typescript')
 var sourcemaps = require('gulp-sourcemaps')
 var tscConfig = require('./tsconfig.json')
 
-var appSrc = "builds/development/"
-var tsSrc = "process/typescript/"
+var appSrc = "./builds/development/"
+var tsSrc = "./process/typescript/"
 
 gulp.task('copylibs', function(){
 	return gulp
-		src([
+		.src([
 			'node_modules/es6-shim/es6-sham.min.js',
 			'node_modules/systemjs/dist/system-polyfills.js',
 			'node_modules/angular2/bundles/angular2-polyfills.js',
@@ -26,7 +26,7 @@ gulp.task('copylibs', function(){
 
 gulp.task('typescript', function(){
 	return gulp
-		src(tsSrc + '**/*.ts')
+		.src(tsSrc + '**/*.ts')
 		.pipe(sourcemaps.init())
 		.pipe(typescript(tscConfig.compilerOptions))
 		.pipe(sourcemaps.write('.'))

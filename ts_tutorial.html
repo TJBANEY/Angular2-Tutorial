@@ -6,8 +6,11 @@
 </head>
 <body>
 	<div class="container" id="container"></div>
-	<script type="text/javascript" src="app.js"></script>
 	<script type="text/javascript" src="./node_modules/systemjs/dist/system.js"></script>
+	<script type="text/javascript">
+		System.defaultJSExtensions = true;
+		System.Import('app');
+	</script>
 </body>
 </html>
 <div todo='[[Todo ID]]' class="list-group-item}">
