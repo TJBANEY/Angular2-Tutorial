@@ -35,7 +35,6 @@ gulp.task('typescript', function(){
 
 gulp.task('watch', function(){
 	gulp.watch(tsSrc + '**/*.ts', ['typescript']);
-	gulp.watch(appSrc + 'css/*.css', ['css']);
 	gulp.watch(appSrc + 'html/*.html', ['html']);
 });
 

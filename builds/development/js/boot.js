@@ -21,10 +21,6 @@ System.register(['angular2/core', 'angular2/platform/browser'], function(exports
                 browser_1 = browser_1_1;
             }],
         execute: function() {
-            path;
-            "node_modules/angular2/typings/browser.d.ts" /  >
-            ;
-            // Decorator, allows us to set up information about our components
             AppComponent = (function () {
                 function AppComponent() {
                 }
@@ -37,11 +33,9 @@ System.register(['angular2/core', 'angular2/platform/browser'], function(exports
                 ], AppComponent);
                 return AppComponent;
             }());
-            browser_1.bootstrap(AppComponent); // bootstrap function will look for the selector that we define
+            browser_1.bootstrap(AppComponent);
         }
     }
 });
-// in our html, and then bind the information from our module
-// to it. 
 
 //# sourceMappingURL=boot.js.map
