@@ -30,6 +30,17 @@ export class AppComponent {
 			}
 		]
 	}
-// These variables in the component are what is interpolated in the
-// template as curly bracket template tags.
+
+	onClick(myName) {
+		this.name = myName;
+	}
+
+	addArtist(artist) {
+		var newArtist = {
+			name: artist,
+			school: "Test School"
+		}
+		this.artists.push(newArtist);
+	}
+
 }

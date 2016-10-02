@@ -40,6 +40,16 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                         }
                     ];
                 }
+                AppComponent.prototype.onClick = function (myName) {
+                    this.name = myName;
+                };
+                AppComponent.prototype.addArtist = function (artist) {
+                    var newArtist = {
+                        name: artist,
+                        school: "Test School"
+                    };
+                    this.artists.push(newArtist);
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
