@@ -40,8 +40,10 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                         }
                     ];
                 }
-                AppComponent.prototype.onClick = function (myName) {
+                AppComponent.prototype.onClick = function (myName, artistElement) {
                     this.name = myName;
+                    console.log(artistElement);
+                    artistElement.style.backgroundColor = "#FECE4E";
                 };
                 AppComponent.prototype.addArtist = function (artist) {
                     var newArtist = {

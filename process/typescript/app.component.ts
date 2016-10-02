@@ -31,8 +31,10 @@ export class AppComponent {
 		]
 	}
 
-	onClick(myName) {
+	onClick(myName, artistElement) {
 		this.name = myName;
+		console.log(artistElement)
+		artistElement.style.backgroundColor="#FECE4E"
 	}
 
 	addArtist(artist) {

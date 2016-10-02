@@ -2,13 +2,13 @@
 	<div class="card search">
 		<h1>Artist Directory</h1>
 		<label *ngIf="name">name: {{ name }}</label>
-		<input #newArtist (keyup.enter)="addArtist(newArtist.value); newArtist.value='' ">
+		<input [(ngModel)]="name" #newArtist (input)="name=$event.target.value" (keyup.enter)="addArtist(newArtist.value); newArtist.value='' ">
 		<button (click)="addArtist(newArtist.value); newArtist.value='' ">Add Artist</button>
 	</div>
 </div>
 
 <ul class="artistlist cf">
-	<li (click)="onClick(item.name)" *ngFor="#item of artists">
+	<li #artistContainer (click)="onClick(item.name, artistContainer)" *ngFor="#item of artists">
 		<h2>{{ item.name }}</h2>
 		<h2>{{ item.school }}</h2>
 	</li>
