@@ -20,6 +20,25 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
+                    this.name = 'Tim';
+                    this.artists = [
+                        {
+                            name: 'Tim',
+                            school: 'Corona'
+                        },
+                        {
+                            name: 'Courtney',
+                            school: 'Corona'
+                        },
+                        {
+                            name: 'Harry Potter',
+                            school: 'Hogwarts'
+                        },
+                        {
+                            name: 'Annie',
+                            school: 'School of Hardknocks'
+                        }
+                    ];
                 }
                 AppComponent = __decorate([
                     core_1.Component({
