@@ -1,4 +1,4 @@
-System.register(['angular2/core', './artist-item.component', './artist-details.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './artist-item.component', './artist-details.component', './search-pipe'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './artist-item.component', './artist-details.c
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, artist_item_component_1, artist_details_component_1;
+    var core_1, artist_item_component_1, artist_details_component_1, search_pipe_1;
     var AppComponent, ARTISTS;
     return {
         setters:[
@@ -22,6 +22,9 @@ System.register(['angular2/core', './artist-item.component', './artist-details.c
             },
             function (artist_details_component_1_1) {
                 artist_details_component_1 = artist_details_component_1_1;
+            },
+            function (search_pipe_1_1) {
+                search_pipe_1 = search_pipe_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -49,6 +52,7 @@ System.register(['angular2/core', './artist-item.component', './artist-details.c
                         selector: 'my-app',
                         templateUrl: 'partials/app.html',
                         directives: [artist_item_component_1.ArtistItemComponent, artist_details_component_1.ArtistDetailsComponent],
+                        pipes: [search_pipe_1.searchPipe],
                         styleUrls: ['css/app.css']
                     }), 
                     __metadata('design:paramtypes', [])

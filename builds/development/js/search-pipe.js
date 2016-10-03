@@ -11,30 +11,34 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var ArtistDetailsComponent;
+    var searchPipe;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            ArtistDetailsComponent = (function () {
-                function ArtistDetailsComponent() {
+            searchPipe = (function () {
+                function searchPipe() {
                 }
-                ArtistDetailsComponent = __decorate([
-                    core_1.Component({
-                        selector: 'artist-details',
-                        templateUrl: 'partials/artistdetails.html',
-                        inputs: ['artist'],
-                        styleUrls: ['css/app-details.css']
+                searchPipe.prototype.transform = function (pipeData, _a) {
+                    var pipeModifier = _a[0];
+                    return pipeData.filter(function (eachItem) {
+                        return eachItem['name'].toLowerCase().includes(pipeModifier.toLowerCase()) ||
+                            eachItem['reknown'].toLowerCase().includes(pipeModifier.toLowerCase());
+                    });
+                };
+                searchPipe = __decorate([
+                    core_1.Pipe({
+                        name: 'find'
                     }), 
                     __metadata('design:paramtypes', [])
-                ], ArtistDetailsComponent);
-                return ArtistDetailsComponent;
+                ], searchPipe);
+                return searchPipe;
             }());
-            exports_1("ArtistDetailsComponent", ArtistDetailsComponent);
+            exports_1("searchPipe", searchPipe);
         }
     }
 });
 
-//# sourceMappingURL=artist-details.component.js.map
+//# sourceMappingURL=search-pipe.js.map
