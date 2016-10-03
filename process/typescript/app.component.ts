@@ -1,5 +1,6 @@
 import {Component} from 'angular2/core';
 import {ArtistItemComponent} from './artist-item.component'
+import {ArtistDetailsComponent} from './artist-details.component'
 
 interface Artist { // Kind of like a class with no methods
 	name: string;
@@ -11,13 +12,14 @@ interface Artist { // Kind of like a class with no methods
 @Component({
 	selector: 'my-app', 
 	templateUrl: 'partials/app.html',
-	directives: [ArtistItemComponent],
+	directives: [ArtistItemComponent, ArtistDetailsComponent],
 	styleUrls: ['css/app.css']
 })
 
 export class AppComponent {
 	name: string;
 	artists: any;
+  currentArtist: Artist;
 
 	constructor(){ // Adjusts settings on the class when it is initialized.
 		this.name = 'Tim'
@@ -37,6 +39,10 @@ export class AppComponent {
 		}
 		this.artists.push(newArtist);
 	}
+
+  showArtist(item) {
+    this.currentArtist = item
+  }
 
 }
 
