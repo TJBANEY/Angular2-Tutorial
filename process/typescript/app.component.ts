@@ -1,4 +1,5 @@
 import {Component} from 'angular2/core';
+import {ArtistItemComponent} from './artist-item.component'
 
 interface Artist { // Kind of like a class with no methods
 	name: string;
@@ -10,6 +11,7 @@ interface Artist { // Kind of like a class with no methods
 @Component({
 	selector: 'my-app', 
 	templateUrl: 'partials/app.html',
+	directives: [ArtistItemComponent],
 	styleUrls: ['css/app.css']
 })
 
